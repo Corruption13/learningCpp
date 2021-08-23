@@ -5,20 +5,29 @@
 #include <string>
 #include <cmath>
 
-double STACKSIZE = 9 ; // Long int
+
+static double STACKSIZE = 9 ; // Long int digits allowed. 
+                              //Keep double for cieling function behaviour.
+
+                      //10**9
+static int STACKMOD = 1000000000;    // STACKSIZE+1 digits.
+
 
 class BiggInt{
 
 public:
 
+    BiggInt(void); 
     BiggInt(std::string val);
+    BiggInt(long val);
     
-    void stringToBiggInt(std::string val); 
+    bool getSign(); 
     std::string BiggIntToString(); 
-    
+    BiggInt operator+(BiggInt y);
 
 
 
+private:
 
     std::vector<long> digitStack ;
     bool sign; 
